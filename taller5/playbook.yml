@@ -1,0 +1,33 @@
+---
+- name: Instalar servidor usando Galaxy y desplegar sitio con templates
+  hosts: web
+  become: yes
+  gather_facts: yes  # necesario para usar ansible_date_time, etc.
+
+  roles:
+    - geerlingguy.apache
+
+  tasks:
+    - name: Eliminar contenido previo en /var/www/html/
+      file:
+        path: /var/www/html/
+        state: absent
+
+    - name: Crear nuevamente el directorio /var/www/html/
+      file:
+        path: /var/www/html/
+        state: directory
+        mode: '0755'
+
+    - name: Renderizar index.html desde plantilla Jinja2
+      template:
+        src: templates/index.html.j2
+        dest: /var/www/html/index.html
+        mode: '0644'
+
+    - name: Renderizar style.css desde plantilla Jinja2
+      template:
+        src: templates/style.css.j2
+        dest: /var/www/html/style.css
+        mode: '0644'
+

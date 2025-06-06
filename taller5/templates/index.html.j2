@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mi sitio web en {{ inventory_hostname }}</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>¡Hola desde {{ inventory_hostname }}!</h1>
+    <p>Este es un sitio web de prueba desplegado con Ansible.</p>
+    <p>Fecha de despliegue: {{ ansible_date_time.date }} {{ ansible_date_time.time }}</p>
+</body>
+</html>
