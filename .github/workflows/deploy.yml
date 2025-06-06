@@ -34,7 +34,7 @@ jobs:
 
     - name: Retrieve Vault password from AWS Secrets Manager
       run: |
-        ansible-playbook retrieve_vault_password.yml
+        ansible-playbook retrieve_password.yml
         
     - name: Debug inventory output
       working-directory: taller4
