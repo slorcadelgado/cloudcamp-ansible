@@ -44,4 +44,4 @@ jobs:
     - name: Run Ansible playbook
       working-directory: taller6
       run: |
-        ansible-playbook site.yml --private-key ~/.ssh/id_ed25519
+        ansible-playbook site.yml -i inventories/prod/inventario.aws_ec2.yml --private-key ~/.ssh/id_ed25519
